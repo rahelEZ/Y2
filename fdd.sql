@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2019 at 02:51 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.31
+-- Generation Time: Nov 10, 2019 at 04:15 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,28 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `fdd`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category`
---
-
-CREATE TABLE `category` (
-  `cat_id` int(11) NOT NULL,
-  `cat_name` varchar(1000) NOT NULL,
-  `cat_description` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(1, 'Arkansas River floods', ''),
-(2, 'Tornado outbreak North America', ''),
-(3, 'Washington(state) wildfires', ''),
-(4, 'California wildfires', '');
 
 -- --------------------------------------------------------
 
@@ -67,58 +45,16 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`pid`, `cid`, `uid`, `description`, `title`, `amount`, `account_num`, `date_created`, `routing_num`) VALUES
-(14, 2, 1, 'My family and I most of our home to the tornado that occured last Thursday.\r\nWe are in need of the following materials \r\n\r\n->Matress\r\n-> Blankets\r\n-> Tent\r\n', 'House Supplies', 200, '7890918761893487', '2019-11-10 12:26:09', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transactions`
---
-
-CREATE TABLE `transactions` (
-  `id` int(11) NOT NULL,
-  `donor_id` int(11) NOT NULL,
-  `reciever_id` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` text NOT NULL DEFAULT '"Success"',
-  `description` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `name` varchar(256) NOT NULL,
-  `phone` text NOT NULL,
-  `user_name` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `date_created` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
-  `user_id` int(11) NOT NULL,
-  `zip_code` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`name`, `phone`, `user_name`, `password`, `date_created`, `user_id`, `zip_code`) VALUES
-('', '', 'rahelermias10@gmail.com', 'password', '2019-11-10 02:57:08.000000', 1, '0'),
-('Rahel Zewde', '6317108520', 'rahez@gmail.com', 'password', '2019-11-10 03:11:12.000000', 3, '11790'),
-('Aleena Shiekh', '3451242312', 'aleena@gmail.com', '', '0000-00-00 00:00:00.000000', 4, '45678');
+(14, 2, 1, 'My family and I most of our home to the tornado that occured last Thursday.\r\nWe are in need of the following materials \r\n\r\n->Matress\r\n-> Blankets\r\n-> Tent\r\n', 'House Supplies', 200, '7890918761893487', '2019-11-10 12:26:09', ''),
+(15, 0, 0, '', NULL, NULL, '', '2019-11-10 09:24:23', ''),
+(16, 2, 3, 'House partially burned in California wild fire', 'Need money for house repairs', 1000, '4302991037', '2019-11-10 09:24:23', '021000034'),
+(17, 1, 1, 'House lost power, need a energy source until restored', 'Need a electric generator', 300, '1294783532', '2019-11-10 09:37:37', '021000076'),
+(18, 4, 1, 'My husband and I have not had any access to clean water and need a water filter to be able to drink water for now', 'We don\'t have clean water', 100, '1415926535', '2019-11-10 09:47:29', '021000045'),
+(19, 3, 3, 'My family lost our home entirely to a wild fire. Until we figure out what to do, we need to stay in a hotel', 'Hotel', 2000, '2340476507', '2019-11-10 10:03:18', '021000034');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`cat_id`);
 
 --
 -- Indexes for table `post`
@@ -127,44 +63,14 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`pid`);
 
 --
--- Indexes for table `transactions`
---
-ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT for table `transactions`
---
-ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
